@@ -46,9 +46,7 @@ public class CustomerOrderService {
             customerOrder.setCustomer(customer);
 
             // Update the bidirectional relationship
-            if (customer.getOrders() == null) {
-                customer.setOrders(new ArrayList<>());
-            }
+
 
 
             // Calculate total price and associate food items
@@ -68,8 +66,6 @@ public class CustomerOrderService {
             customerOrder.setOrderDateTime(LocalDateTime.now());
             customerOrder.setTotalPrice(totalPrice);
 
-            customer.setOrders(foodItemList);
-            customerRepository.save(customer);
             // Save the order
             return customerOrderRepository.save(customerOrder);
         } catch (Exception e) {

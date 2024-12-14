@@ -18,14 +18,6 @@ public class Customer {
     private String email;
     private String phoneNumber;
 
-    @ManyToMany
-    @JoinTable(
-            name = "customer_fooditem",
-            joinColumns = @JoinColumn(name = "customer_id"),
-            inverseJoinColumns = @JoinColumn(name = "fooditem_id"))
-    private List<FoodItem> foodItems;  // Directly store FoodItems for the customer
-
-
     public void setId(Long id) {
         this.id = id;
     }
@@ -42,9 +34,6 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
-    public void setOrders(List<FoodItem> orders) {
-        this.foodItems = orders;
-    }
 
     public Long getId() {
         return id;
@@ -62,7 +51,4 @@ public class Customer {
         return phoneNumber;
     }
 
-    public List<FoodItem> getOrders() {
-        return foodItems;
-    }
 }
