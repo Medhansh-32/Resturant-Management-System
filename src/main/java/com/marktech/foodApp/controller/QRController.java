@@ -27,7 +27,6 @@ public class QRController {
     String domainName="http://localhost:8080/menu";
     HttpHeaders headers = new HttpHeaders();
     headers.setContentType(MediaType.parseMediaType("image/jpeg"));
-    qrCodeService.generateQRCode(domainName).toByteArray();
     ByteArrayResource byteArrayResource=new ByteArrayResource(qrCodeService.generateQRCode(domainName).toByteArray());
     return new ResponseEntity<>(byteArrayResource,headers, HttpStatus.OK);
 }

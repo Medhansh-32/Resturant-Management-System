@@ -41,15 +41,7 @@ public class CustomerOrderService {
             } else {
                 customer = customerRepository.save(customer); // Save new customer
             }
-
-            // Associate the customer with the order
             customerOrder.setCustomer(customer);
-
-            // Update the bidirectional relationship
-
-
-
-            // Calculate total price and associate food items
             Integer totalPrice = 0;
             List<FoodItem> foodItemList = new ArrayList<>();
             for (FoodItem item : customerOrder.getFoodItems()) {
@@ -65,8 +57,6 @@ public class CustomerOrderService {
             customerOrder.setStatus(OrderStatus.IN_PROGRESS);
             customerOrder.setOrderDateTime(LocalDateTime.now());
             customerOrder.setTotalPrice(totalPrice);
-
-            // Save the order
             return customerOrderRepository.save(customerOrder);
         } catch (Exception e) {
             log.error("Error while saving customer order: ", e);
