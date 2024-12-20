@@ -3,6 +3,10 @@ package com.marktech.foodApp.controller;
 import com.marktech.foodApp.model.CustomerOrder;
 import com.marktech.foodApp.repository.CustomerOrderRepository;
 import com.marktech.foodApp.service.CustomerOrderService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,6 +15,7 @@ import java.util.List;
 @RequestMapping("/order")
 public class OrderController {
 
+    private static final Logger log = LoggerFactory.getLogger(OrderController.class);
     private final CustomerOrderRepository customerOrderRepository;
     private final CustomerOrderService customerOrderService;
 
@@ -20,12 +25,18 @@ public class OrderController {
     }
 
     @PostMapping("/newOrder")
-    public CustomerOrder newOrder(@RequestBody CustomerOrder order) {
-     return  customerOrderService.addNewCustomerOrder(order);
+    public ResponseEntity newOrder(@RequestBody CustomerOrder order) {
+        log.info("new Order");
+    return customerOrderService.addNewCustomerOrder(order);
     }
 
+    @GetMapping("/allOrders")
+    public ResponseEntity getAllOrders() {
+        log.info("getAllOrders");
+        return new ResponseEntity(customerOrderService.getCustomerOrders(), HttpStatus.OK);
+    }
     @GetMapping("/orderByName")
     public List<CustomerOrder> getOrdersByName(@RequestParam("name") String name) {
-return customerOrderService.getCustomerOrderByName(name);
+        return customerOrderService.getCustomerOrderByName(name);
     }
 }

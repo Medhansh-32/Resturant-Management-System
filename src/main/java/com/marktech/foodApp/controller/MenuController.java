@@ -23,7 +23,7 @@ public class MenuController {
         this.menuService = menuService;
     }
 
-    @GetMapping("/menu")
+    @GetMapping("/menuList")
     public ResponseEntity<List<FoodItem>> getMenu() throws Exception {
         return new ResponseEntity<>(menuService.getAllFoodItems(), HttpStatus.OK);
     }

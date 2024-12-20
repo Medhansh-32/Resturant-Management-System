@@ -18,6 +18,7 @@ public class FoodItem {
 
     private String description;
 
+
     @Column(nullable = false)
     private Integer price;
 

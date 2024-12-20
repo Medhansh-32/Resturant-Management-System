@@ -1,5 +1,6 @@
 package com.marktech.foodApp.service;
 
+import com.marktech.foodApp.WebSockets.OrderWebSocketHandler;
 import com.marktech.foodApp.model.Customer;
 import com.marktech.foodApp.model.CustomerOrder;
 import com.marktech.foodApp.model.FoodItem;
@@ -10,6 +11,8 @@ import com.marktech.foodApp.repository.FoodItemRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -23,14 +26,20 @@ public class CustomerOrderService {
     private final FoodItemRepository foodItemRepository;
     private final CustomerOrderRepository customerOrderRepository;
     private final CustomerRepository customerRepository;
+    private final OrderWebSocketHandler orderWebSocketHandler;
 
-    public CustomerOrderService(FoodItemRepository foodItemRepository, CustomerOrderRepository customerOrderRepository, CustomerRepository customerRepository) {
+    public CustomerOrderService(FoodItemRepository foodItemRepository, CustomerOrderRepository customerOrderRepository, CustomerRepository customerRepository, OrderWebSocketHandler orderWebSocketHandler) {
         this.foodItemRepository = foodItemRepository;
         this.customerOrderRepository = customerOrderRepository;
         this.customerRepository = customerRepository;
+        this.orderWebSocketHandler = orderWebSocketHandler;
     }
 
-    public CustomerOrder addNewCustomerOrder(CustomerOrder customerOrder) {
+    public List<CustomerOrder> getCustomerOrders() {
+        return (List<CustomerOrder>) customerOrderRepository.findAll();
+    }
+
+    public ResponseEntity<CustomerOrder> addNewCustomerOrder(CustomerOrder customerOrder) {
         try {
             Customer customer = customerOrder.getCustomer();
 
@@ -43,6 +52,7 @@ public class CustomerOrderService {
             }
             customerOrder.setCustomer(customer);
             Integer totalPrice = 0;
+
             List<FoodItem> foodItemList = new ArrayList<>();
             for (FoodItem item : customerOrder.getFoodItems()) {
                 FoodItem foodItem = foodItemRepository.findByName(item.getName());
@@ -51,17 +61,21 @@ public class CustomerOrderService {
                 }
                 foodItemList.add(foodItem);
                 totalPrice += foodItem.getPrice();
+
             }
 
             customerOrder.setFoodItems(foodItemList);
             customerOrder.setStatus(OrderStatus.IN_PROGRESS);
             customerOrder.setOrderDateTime(LocalDateTime.now());
             customerOrder.setTotalPrice(totalPrice);
-            return customerOrderRepository.save(customerOrder);
+
+            customerOrder= customerOrderRepository.save(customerOrder);
+            orderWebSocketHandler.sendOrderUpdate(customerOrder);
+            return new ResponseEntity<>(customerOrder, HttpStatus.OK);
         } catch (Exception e) {
             log.error("Error while saving customer order: ", e);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
-        return null;
     }
     public List<CustomerOrder> getCustomerOrderByName(String name) {
    return    customerOrderRepository.findByCustomerId(customerRepository.findByName(name).getId());
