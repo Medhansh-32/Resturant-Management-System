@@ -1,5 +1,5 @@
 // WebSocket connection
-const socket = new WebSocket('ws://localhost:8080/ws/orders');
+const socket = new WebSocket('wss://cheflink.onrender.com/ws/orders');
 const orders = new Map();
 
 // Add CSS for animations
