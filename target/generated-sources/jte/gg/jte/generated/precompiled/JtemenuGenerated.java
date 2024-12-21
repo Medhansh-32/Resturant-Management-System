@@ -4,7 +4,7 @@ import java.util.List;
 public final class JtemenuGenerated {
 	public static final String JTE_NAME = "menu.jte";
 	public static final int[] JTE_LINE_INFO = {0,0,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,19,19,19,19,21,21,21,21,21,21,21,21,21,23,23,23,24,24,24,26,26,26,27,27,27,27,27,27,27,27,32,32,36,42,48,66,66,66,2,2,2,2};
-	private static final gg.jte.runtime.BinaryContent BINARY_CONTENT = gg.jte.runtime.BinaryContent.load(JtemenuGenerated.class, "JtemenuGenerated.bin", 674,1,58,6,1,97,30,153,56,3,107,23,150,101,640);
+	private static final gg.jte.runtime.BinaryContent BINARY_CONTENT = gg.jte.runtime.BinaryContent.load(JtemenuGenerated.class, "JtemenuGenerated.bin", 674,1,58,6,1,97,30,153,56,3,107,23,151,101,640);
 	private static final byte[] TEXT_PART_BINARY_0 = BINARY_CONTENT.get(0);
 	private static final byte[] TEXT_PART_BINARY_1 = BINARY_CONTENT.get(1);
 	private static final byte[] TEXT_PART_BINARY_2 = BINARY_CONTENT.get(2);

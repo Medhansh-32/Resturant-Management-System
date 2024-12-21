@@ -20,7 +20,7 @@ public class HomeController {
         this.menuService = menuService;
     }
 
-    @GetMapping("/menu")
+    @GetMapping("")
     public String menu(Model model) {
 
         List<FoodItem>menuList=menuService.getAllFoodItems();

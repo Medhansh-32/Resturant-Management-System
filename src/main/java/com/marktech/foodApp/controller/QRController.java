@@ -27,9 +27,9 @@ public class QRController {
         this.menuService = menuService;
     }
 
-@GetMapping("")
+@GetMapping("/qr")
     public ResponseEntity<ByteArrayResource> getQR(HttpServletRequest request) throws Exception {
-    String domainName = ServletUriComponentsBuilder.fromContextPath(request).path("/menu").toUriString();
+    String domainName = ServletUriComponentsBuilder.fromContextPath(request).toUriString();
     log.info(domainName);
     HttpHeaders headers = new HttpHeaders();
     headers.setContentType(MediaType.parseMediaType("image/jpeg"));

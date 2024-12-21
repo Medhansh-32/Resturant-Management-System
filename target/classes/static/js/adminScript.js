@@ -110,7 +110,7 @@ function renderOrders() {
     const existingCards = new Set(Array.from(container.children).map(card => card.getAttribute('data-id')));
 
     const sortedOrders = Array.from(orders.values())
-        .sort((b,a) => new Date(a.id) - new Date(b.id)); // Sort in ascending order
+        .sort((b,a) => new Date(a.id) - new Date(b.id));
 
     sortedOrders.forEach(order => {
         const orderId = order.id.toString();
@@ -165,7 +165,7 @@ async function deleteOrder(orderId) {
     }
 }
 
-// Create order card element (rest of the function remains the same)
+
 function createOrderCard(order) {
     const card = document.createElement('div');
     card.className = 'order-card';

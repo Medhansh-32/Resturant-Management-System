@@ -36,7 +36,7 @@
 
 <!-- Cart Sidebar -->
 <div class="cart-container">
-    <h2>Your Cart</h2>
+    <h2>Your Plate</h2>
     <br>
     <hr style="width: 100%">
     <div class="cart-items" id="cart-items">

@@ -33,7 +33,8 @@ public class SecurityConfig {
                         .anyRequest().permitAll()// Require authentication for other requests
                 )
                 .formLogin(req->
-                        req.loginPage("/login"))
+                        req.loginPage("/login")
+                                .defaultSuccessUrl("/admin", true))
 
                 .logout(logout -> logout
                         .permitAll()
