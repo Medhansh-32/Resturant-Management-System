@@ -69,6 +69,7 @@ socket.onmessage = (event) => {
     const order = JSON.parse(event.data);
     orders.set(order.id, order);
     renderOrders();
+
 };
 
 socket.onerror = (error) => {
@@ -77,7 +78,7 @@ socket.onerror = (error) => {
 
 // Format date to readable string
 function formatDateTime(dateArray) {
-    // Handle the milliseconds correctly by dividing the nanoseconds by 1000000
+
     const milliseconds = Math.floor(dateArray[6] / 1000000);
 
     // Create a date object using the array values
@@ -110,7 +111,7 @@ function renderOrders() {
     const existingCards = new Set(Array.from(container.children).map(card => card.getAttribute('data-id')));
 
     const sortedOrders = Array.from(orders.values())
-        .sort((b,a) => new Date(a.id) - new Date(b.id));
+        .sort((b,a) => new Date(b.id) - new Date(a.id));
 
     sortedOrders.forEach(order => {
         const orderId = order.id.toString();

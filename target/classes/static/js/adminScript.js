@@ -1,5 +1,5 @@
 
-const socket = new WebSocket('wss://cheflink.onrender.com/ws/orders');
+const socket = new WebSocket('ws://localhost:8080/ws/orders');
 const orders = new Map();
 
 
@@ -69,6 +69,8 @@ socket.onmessage = (event) => {
     const order = JSON.parse(event.data);
     orders.set(order.id, order);
     renderOrders();
+    alert("New Order");
+    window.location.reload()
 };
 
 socket.onerror = (error) => {
@@ -77,7 +79,7 @@ socket.onerror = (error) => {
 
 // Format date to readable string
 function formatDateTime(dateArray) {
-    // Handle the milliseconds correctly by dividing the nanoseconds by 1000000
+
     const milliseconds = Math.floor(dateArray[6] / 1000000);
 
     // Create a date object using the array values
