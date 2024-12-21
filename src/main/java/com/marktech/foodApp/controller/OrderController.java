@@ -39,4 +39,13 @@ public class OrderController {
     public List<CustomerOrder> getOrdersByName(@RequestParam("name") String name) {
         return customerOrderService.getCustomerOrderByName(name);
     }
+    @DeleteMapping("/deleteOrder")
+    public ResponseEntity deleteOrder(@RequestParam("orderId") Long orderId) {
+        log.info("deleteOrder");
+      if(customerOrderService.deleteOrderById(orderId)){
+          return new ResponseEntity(HttpStatus.OK);
+      }else{
+          return new ResponseEntity(HttpStatus.NOT_FOUND);
+      }
+    }
 }

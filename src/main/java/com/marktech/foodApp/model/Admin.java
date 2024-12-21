@@ -1,21 +1,30 @@
 package com.marktech.foodApp.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-
+import jakarta.persistence.*;
+import org.springframework.web.bind.annotation.GetMapping;
 
 
 @Entity
 public class Admin {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(unique=true, nullable=false)
     private String adminName;
     private String adminPassword;
     private String adminEmail;
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    private String phoneNumber;
 
     public Long getId() {
         return id;

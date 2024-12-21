@@ -28,8 +28,17 @@ public class HomeController {
         return "menu";
 
     }
-@GetMapping("/admin")
-    public String admin(Model model) {
-        return "admin";
-}
+    @GetMapping("/admin")
+        public String admin(Model model) {
+            return "admin";
+    }
+
+    @GetMapping("/register")
+    public String register() {
+        return "register";
+    }
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
 }

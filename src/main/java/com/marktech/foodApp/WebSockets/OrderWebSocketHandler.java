@@ -32,15 +32,25 @@ public class OrderWebSocketHandler extends TextWebSocketHandler {
     }
 
     public void sendOrderUpdate(CustomerOrder order) throws IOException {
-;
         String orderJson = objectMapper.writeValueAsString(order);
+
+        // Iterate through all sessions
         for (WebSocketSession session : sessions) {
             try {
-                session.sendMessage(new TextMessage(orderJson));  // Send order details to the admin
+                // Check if the session is open before attempting to send the message
+                if (session.isOpen()) {
+                    session.sendMessage(new TextMessage(orderJson));  // Send order details to the admin
+                } else {
+                    // If the session is closed, remove it from the session list
+                    sessions.remove(session);
+                }
             } catch (IOException e) {
                 e.printStackTrace();
+                // Optionally remove the session if an error occurs
+                sessions.remove(session);
             }
         }
     }
+
 }
 

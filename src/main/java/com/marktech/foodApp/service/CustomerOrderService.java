@@ -16,8 +16,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TimeZone;
 
 @Service
 public class CustomerOrderService {
@@ -66,7 +69,10 @@ public class CustomerOrderService {
 
             customerOrder.setFoodItems(foodItemList);
             customerOrder.setStatus(OrderStatus.IN_PROGRESS);
-            customerOrder.setOrderDateTime(LocalDateTime.now());
+            ZoneId indiaZoneId = ZoneId.of("Asia/Kolkata");
+            ZonedDateTime indiaTime = ZonedDateTime.now(indiaZoneId);
+            LocalDateTime localIndiaTime = indiaTime.toLocalDateTime();
+            customerOrder.setOrderDateTime(localIndiaTime);
             customerOrder.setTotalPrice(totalPrice);
 
             customerOrder= customerOrderRepository.save(customerOrder);
@@ -79,5 +85,15 @@ public class CustomerOrderService {
     }
     public List<CustomerOrder> getCustomerOrderByName(String name) {
    return    customerOrderRepository.findByCustomerId(customerRepository.findByName(name).getId());
+    }
+    public Boolean deleteOrderById(Long id) {
+        try {
+            customerOrderRepository.deleteById(id);
+            return true;
+        }catch (Exception e){
+            log.info("Error while deleting Order"+e.getMessage());
+            return false;
+        }
+
     }
 }
