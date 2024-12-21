@@ -8,12 +8,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.socket.TextMessage;
-import org.springframework.web.socket.WebSocketMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 @Service
 public class OrderWebSocketHandler extends TextWebSocketHandler {
@@ -22,7 +20,7 @@ public class OrderWebSocketHandler extends TextWebSocketHandler {
     @Autowired
     private ObjectMapper objectMapper;
 
-    private final List<WebSocketSession> sessions = new ArrayList<>();
+    CopyOnWriteArrayList<WebSocketSession> sessions = new CopyOnWriteArrayList<>();
 
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
@@ -39,9 +37,8 @@ public class OrderWebSocketHandler extends TextWebSocketHandler {
         log.info(orderJson);
         for (WebSocketSession session : sessions) {
             try {
-
                 if (session.isOpen()) {
-                    session.sendMessage(new TextMessage(orderJson));  
+                    session.sendMessage(new TextMessage(orderJson));
                 } else {
 
                     sessions.remove(session);
