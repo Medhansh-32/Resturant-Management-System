@@ -1,5 +1,5 @@
 
-const socket = new WebSocket('ws://localhost:8080/ws/orders');
+const socket = new WebSocket('wss://cheflink.onrender.com/ws/orders');
 const orders = new Map();
 
 
@@ -69,8 +69,7 @@ socket.onmessage = (event) => {
     const order = JSON.parse(event.data);
     orders.set(order.id, order);
     renderOrders();
-    alert("New Order");
-    window.location.reload()
+
 };
 
 socket.onerror = (error) => {
@@ -112,7 +111,7 @@ function renderOrders() {
     const existingCards = new Set(Array.from(container.children).map(card => card.getAttribute('data-id')));
 
     const sortedOrders = Array.from(orders.values())
-        .sort((b,a) => new Date(a.id) - new Date(b.id));
+        .sort((b,a) => new Date(b.id) - new Date(a.id));
 
     sortedOrders.forEach(order => {
         const orderId = order.id.toString();
