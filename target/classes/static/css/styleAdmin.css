@@ -46,6 +46,8 @@ body {
 }
 
 .header {
+    display: flex;
+    justify-content: space-between;
     background: white;
     padding: 20px;
     border-radius: 12px;
@@ -143,7 +145,23 @@ body {
     font-size: 0.9rem;
     color: #444;
 }
+.logout-button {
+    padding: 8px 16px;
+    font-size: 1rem;
+    color: white;
+    background-color: #007bff;
+    text-decoration: none; /* Removes underline */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    text-align: center;
+}
 
+.logout-button:hover {
+    background-color: #0056b3;
+}
 .total-price {
     font-weight: 600;
     color: #1a1a1a;

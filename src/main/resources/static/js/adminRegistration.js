@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     form.addEventListener('submit', async function(event) {
         event.preventDefault(); // Prevent form from submitting the traditional way
 
-        // Get form values
+
         const firstName = document.getElementById('firstName').value;
         const lastName = document.getElementById('lastName').value;
         const email = document.getElementById('email').value;
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const password = document.getElementById('password').value;
         const confirmPassword = document.getElementById('confirmPassword').value;
 
-        // Basic validation
+
         if (password !== confirmPassword) {
             alert('Passwords do not match!');
             return;

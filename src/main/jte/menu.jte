@@ -25,7 +25,7 @@
                     <p>${item.getDescription()}</p>
                     <div style="display: flex;justify-content: space-between;align-items: center;">
                         <div class="price">₹${item.getPrice()}</div>
-                    <button onclick="addToCart('${item.getName()}', ${item.getPrice()})">Add to cart</button>
+                    <button onclick="addToCart('${item.getName()}', ${item.getPrice()})">Add to Plate</button>
                     </div>
 
                 </div>

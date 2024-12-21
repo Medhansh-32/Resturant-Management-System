@@ -22,7 +22,7 @@
                     <p></p>
                     <div style="display: flex;justify-content: space-between;align-items: center;">
                         <div class="price">₹</div>
-                    <button onclick="addToCart('', )">Add to cart</button>
+                    <button onclick="addToCart('', )">Add to Plate</button>
                     </div>
 
                 </div>

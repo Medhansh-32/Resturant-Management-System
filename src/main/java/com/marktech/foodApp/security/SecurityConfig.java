@@ -36,10 +36,10 @@ public class SecurityConfig {
                         req.loginPage("/login"))
 
                 .logout(logout -> logout
-                        .permitAll() // Allow all users to log out
+                        .permitAll()
                 );
 
-        return http.build(); // Build and return the SecurityFilterChain
+        return http.build();
     }
 
     @Bean

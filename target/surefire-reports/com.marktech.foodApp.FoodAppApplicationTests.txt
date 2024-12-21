@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.marktech.foodApp.FoodAppApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 19.77 s -- in com.marktech.foodApp.FoodAppApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.62 s -- in com.marktech.foodApp.FoodAppApplicationTests

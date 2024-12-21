@@ -1,8 +1,8 @@
-// WebSocket connection
+
 const socket = new WebSocket('wss://cheflink.onrender.com/ws/orders');
 const orders = new Map();
 
-// Add CSS for animations
+
 const style = document.createElement('style');
 style.textContent = `
     .order-card {
@@ -105,14 +105,10 @@ function formatDateTime(dateArray) {
     return formatter.format(date);
 }
 
-// Example usage
-
-// Render all orders
 function renderOrders() {
     const container = document.getElementById('orders-container');
     const existingCards = new Set(Array.from(container.children).map(card => card.getAttribute('data-id')));
 
-    // Sort orders so that the oldest order comes first (ascending order)
     const sortedOrders = Array.from(orders.values())
         .sort((b,a) => new Date(a.id) - new Date(b.id)); // Sort in ascending order
 
@@ -121,7 +117,6 @@ function renderOrders() {
         const existingCard = container.querySelector(`[data-id="${orderId}"]`);
 
         if (!existingCard) {
-            // New order - add with animation
             const orderCard = createOrderCard(order);
             if (container.firstChild) {
                 container.insertBefore(orderCard, container.firstChild);
@@ -132,7 +127,7 @@ function renderOrders() {
         existingCards.delete(orderId);
     });
 
-    // Remove any remaining cards that are not in the new list
+
     existingCards.forEach(cardId => {
         const cardToRemove = container.querySelector(`[data-id="${cardId}"]`);
         if (cardToRemove) {
@@ -146,7 +141,6 @@ async function deleteOrder(orderId) {
         const orderCard = document.querySelector(`.order-card[data-id="${orderId}"]`);
         if (!orderCard) return;
 
-        // Add the removing class to trigger the animation
         orderCard.classList.add('removing');
 
         // Wait for animation to complete before making the API call
