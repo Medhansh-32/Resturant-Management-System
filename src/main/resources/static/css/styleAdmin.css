@@ -39,7 +39,7 @@ body {
     background-color: #b71c1c;
     opacity: 0.9;
 }
-. add-item-button {
+.add-item-button {
      background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
      color: white;
      padding: 12px 24px;
