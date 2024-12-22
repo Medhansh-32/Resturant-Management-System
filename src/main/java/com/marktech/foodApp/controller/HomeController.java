@@ -28,6 +28,10 @@ public class HomeController {
         return "menu";
 
     }
+    @GetMapping("/addItem")
+    public String addItem(Model model) {
+        return "addMenuItem";
+    }
     @GetMapping("/admin")
         public String admin(Model model) {
             return "admin";

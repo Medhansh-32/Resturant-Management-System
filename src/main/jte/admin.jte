@@ -13,6 +13,9 @@
 <div class="dashboard">
     <div class="header">
         <h1>Order Management Dashboard</h1>
+        <a href="/addItem" class="add-item-button">
+            <i class="fa-solid fa-plus"></i> Add Menu Item
+        </a>
         <a href="/logout" class="logout-button">Logout <i class="fa-solid fa-right-from-bracket"></i></a>
     </div>
 

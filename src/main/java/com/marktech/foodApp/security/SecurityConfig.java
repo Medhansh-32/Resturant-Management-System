@@ -29,7 +29,7 @@ public class SecurityConfig {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(request -> request
                         .requestMatchers("/css/**","/js/**").permitAll()
-                        .requestMatchers("/admin","order/deleteOrder","order/allOrders").authenticated()
+                        .requestMatchers("/admin","order/deleteOrder","order/allOrders","addItem","image/upload").authenticated()
                         .anyRequest().permitAll()// Require authentication for other requests
                 )
                 .formLogin(req->

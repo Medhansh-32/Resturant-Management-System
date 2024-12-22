@@ -39,6 +39,42 @@ body {
     background-color: #b71c1c;
     opacity: 0.9;
 }
+. add-item-button {
+     background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+     color: white;
+     padding: 12px 24px;
+     border-radius: 50px;
+     font-size: 1rem;
+     font-weight: 600;
+     text-decoration: none;
+     display: flex;
+     align-items: center;
+     gap: 0.5rem;
+     box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+     transition: all 0.3s ease;
+ }
+
+.add-item-button:hover {
+    background: linear-gradient(45deg, #ff5252, #ff7675);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+}
+
+.add-item-button:active {
+    transform: translateY(1px);
+}
+
+.add-item-button i {
+    font-size: 1rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .add-item-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
 button{
     -webkit-tap-highlight-color: transparent;
 }
