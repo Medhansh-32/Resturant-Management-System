@@ -3,7 +3,10 @@ let cart = [];
 
 
 function addToCart(name, price) {
-const addToCart=document.getElementById("add-to-cart");
+    const addToCartButtons = document.querySelectorAll('#add-to-cart');
+    const clickedButton = Array.from(addToCartButtons).find(button =>
+        button.getAttribute('onclick') === `addToCart('${name}', ${price})`
+    );
     const existingItem = cart.find(item => item.name === name);
 
     if (existingItem) {
@@ -12,11 +15,13 @@ const addToCart=document.getElementById("add-to-cart");
 
         cart.push({ name, price, quantity: 1 });
     }
-       addToCart.innerText="Item Added..";
-        setTimeout(()=>{
-            addToCart.innerText="Add to Plate";
-        },1000)
 
+    if (clickedButton) {
+        clickedButton.innerText = "Item Added";
+        setTimeout(() => {
+            clickedButton.innerText = "Add to Plate";
+        }, 1000);
+    }
     updateCartUI();
 }
 

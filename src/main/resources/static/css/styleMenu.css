@@ -21,6 +21,7 @@ body {
 
 /* Menu Container Styling */
 .menu-container {
+    margin-top: 10px;
     width: 70%;
     padding: 30px;
     background: rgba(255, 255, 255, 0.95);
@@ -342,7 +343,9 @@ button:active {
     body {
         padding: 10px 10px 70px 10px; /* Added bottom padding for mobile cart button */
     }
-
+    .user-details button{
+        margin-bottom: 10px;
+    }
     .menu-container {
         width: 100%;
         margin-bottom: 60px; /* Space for mobile cart button */
