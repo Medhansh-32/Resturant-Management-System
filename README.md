@@ -33,6 +33,9 @@ The QR code below directs customers to the food ordering page, where they can vi
 
 - **Order Dashboard**: Admins can view active and completed orders. 📊  
   URL: [Order Dashboard](https://cheflink.onrender.com/admin)
+  
+- **Admin Dashboard**: Admins can add new dishes to the menu with dish images directly sotred in cloud. 📊  
+  URL: [Add Dish Dashboard](https://cheflink.onrender.com/addItem)
 
 - **For Demonstration**:
   - Sample Username: **Keshav Sharma**  
@@ -45,14 +48,15 @@ To run the application locally, follow these steps:
 1. **Clone the repository**:
 
     ```sh
-    git clone https://github.com/Medhansh-32/PaperPal.git
+    https://github.com/Medhansh-32/Resturant-Management-System.git
     ```
 
-2. **Navigate to the project directory**:
+2. **Provide the your credentials like MySQL Data Source Url, username, password and client ID for imgur cloud in application.properties**:
 
-    ```sh
-    cd PaperPal
-    ```
+spring.datasource.url=
+spring.datasource.username=
+spring.datasource.password=
+client_id=
 
 3. **Build and run the application using Maven or Gradle**:
 
