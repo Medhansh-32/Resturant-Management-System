@@ -117,7 +117,7 @@ placeOrder.innerText="Placing Order....";
         alert("Error placing order. Please try again.");
     }
 }
-// Add these functions to your existing JavaScript
+
 
 document.addEventListener('DOMContentLoaded', function() {
     const cartToggle = document.getElementById('cartToggle');
