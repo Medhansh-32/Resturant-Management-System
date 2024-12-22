@@ -11,7 +11,7 @@ This is a **Restaurant Management System** developed using **Spring Boot**, **JT
 - **MySQL**: Database for storing orders, user details, menu items, etc. 🗃️
 
 ## 🚀 Features
-- **Admin Panel**: Allows restaurant admins to manage orders, view customer requests, and perform administrative tasks. 🧑‍💼
+- **Admin Panel**: Allows restaurant admins to manage orders, add new dishes in the menu, view customer requests, and perform administrative tasks. 🧑‍💼
 - **Customer Ordering**: Customers can browse the menu, place orders, and make payments. 🍽️
 - **Real-Time Updates**: WebSockets provide real-time updates to admins about the status of customer orders. 🔄
 - **Security**: The system uses **Spring Security** to protect the admin routes and provide user login functionality. 🛡️
