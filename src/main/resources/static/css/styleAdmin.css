@@ -39,7 +39,9 @@ body {
     background-color: #b71c1c;
     opacity: 0.9;
 }
-
+button{
+    -webkit-tap-highlight-color: transparent;
+}
 .dashboard {
     max-width: 1400px;
     margin: 0 auto;

@@ -92,7 +92,9 @@ body {
 .btn-login:hover {
     background-color: #c0392b;
 }
-
+button{
+    -webkit-tap-highlight-color: transparent;
+}
 .links {
     margin-top: 1.5rem;
     text-align: center;

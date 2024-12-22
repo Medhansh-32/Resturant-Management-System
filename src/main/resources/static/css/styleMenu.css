@@ -308,4 +308,87 @@ button:active {
 
 ::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(45deg, #ff5252, #ff7675);
+}/* Add these new styles to your existing CSS */
+
+/* Mobile Cart Button */
+.mobile-cart-btn {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+    color: white;
+    padding: 15px;
+    text-align: center;
+    z-index: 1000;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
 }
+
+.cart-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    border: none;
+    background: none;
+    color: white;
+    font-size: 1.1em;
+}
+
+/* Modify your existing media queries */
+@media (max-width: 768px) {
+    body {
+        padding: 10px 10px 70px 10px; /* Added bottom padding for mobile cart button */
+    }
+
+    .menu-container {
+        width: 100%;
+        margin-bottom: 60px; /* Space for mobile cart button */
+    }
+
+    .cart-container {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 91vh;
+        margin: 0;
+        transform: translateY(100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 999;
+        border-radius: 20px 20px 0 0;
+    }
+    button{
+        -webkit-tap-highlight-color: transparent;
+    }
+    .cart-container.show {
+        transform: translateY(1vh);
+    }
+
+    .mobile-cart-btn {
+        display: block;
+    }
+
+    /* Overlay for cart background */
+    .cart-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 998;
+    }
+
+    .cart-overlay.show {
+        display: block;
+    }
+}
+.cart-open {
+     overflow: hidden;
+     position: fixed;
+     width: 100%;
+ }

@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<div class="menu-container">
+<div class="menu-container" id="menu">
     <h1>MarkFood Restaurant's Menu <i class="fa-solid fa-utensils"></i></h1>
     <hr>
     <ul class="menu-list">
@@ -25,7 +25,7 @@
                     <p>${item.getDescription()}</p>
                     <div style="display: flex;justify-content: space-between;align-items: center;">
                         <div class="price">₹${item.getPrice()}</div>
-                    <button onclick="addToCart('${item.getName()}', ${item.getPrice()})">Add to Plate</button>
+                    <button id="add-to-cart" onclick="addToCart('${item.getName()}', ${item.getPrice()})">Add to Plate</button>
                     </div>
 
                 </div>
@@ -58,9 +58,20 @@
         <label for="phoneNumber">Phone Number:</label>
         <input type="tel" id="phoneNumber" placeholder="Enter your phone number" required>
         <br>
-        <button onclick="placeOrder()">Place Order</button>
+        <button onclick="placeOrder()" id="place-order">Place Order</button>
     </div>
 </div>
+<!-- Mobile Cart Button -->
+<div class="mobile-cart-btn">
+    <button class="cart-toggle" id="cartToggle">
+        <i class="fas fa-shopping-cart"></i>
+        <span>View Cart</span>
+        <span id="mobileCartTotal">(₹0)</span>
+    </button>
+</div>
+
+<!-- Cart Overlay -->
+<div class="cart-overlay" id="cartOverlay"></div>
 <script src="/js/menuScript.js"></script>
 </body>
 </html>

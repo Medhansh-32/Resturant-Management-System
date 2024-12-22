@@ -3,17 +3,19 @@ let cart = [];
 
 
 function addToCart(name, price) {
-
+const addToCart=document.getElementById("add-to-cart");
     const existingItem = cart.find(item => item.name === name);
 
     if (existingItem) {
-
         existingItem.quantity += 1;
     } else {
 
         cart.push({ name, price, quantity: 1 });
     }
-
+       addToCart.innerText="Item Added..";
+        setTimeout(()=>{
+            addToCart.innerText="Add to Plate";
+        },1000)
 
     updateCartUI();
 }
@@ -51,7 +53,7 @@ function updateCartUI() {
 
         cartItem.innerHTML = `
             <p>${item.name} x ${item.quantity}</p>
-            <p>Price: ₹${itemTotalPrice}</p>
+            <p> &nbsp;&nbsp;: ₹${itemTotalPrice}&nbsp;&nbsp;</p>
             <button onclick="removeFromCart(${index})">Remove</button>
         `;
 
@@ -65,7 +67,7 @@ async  function placeOrder() {
     const customerName = document.getElementById('name').value;
     const customerEmail = document.getElementById('email').value;
     const customerPhone = document.getElementById('phoneNumber').value;
-
+    const placeOrder = document.getElementById("place-order");
     if (!customerName || !customerEmail || !customerPhone) {
         alert("Please fill in all your details!");
         return;
@@ -88,7 +90,7 @@ async  function placeOrder() {
         }
     });
 
-
+placeOrder.innerText="Placing Order....";
     try {
         const response = await fetch("order/newOrder", {
             method: 'POST',
@@ -100,8 +102,10 @@ async  function placeOrder() {
 
         if (response.ok) {
             const data = await response.json();
-            console.log('Order placed successfully:', data);
-            alert("Your order has been placed successfully!");
+            placeOrder.innerText="Order Placed Successfully";
+            setTimeout(()=>{
+                placeOrder.innerText="Place Order";
+            },1000)
 
             cart = [];
             updateCartUI();
@@ -113,3 +117,58 @@ async  function placeOrder() {
         alert("Error placing order. Please try again.");
     }
 }
+// Add these functions to your existing JavaScript
+
+document.addEventListener('DOMContentLoaded', function() {
+    const cartToggle = document.getElementById('cartToggle');
+    const cartContainer = document.querySelector('.cart-container');
+    const cartOverlay = document.getElementById('cartOverlay');
+    const mobileCartTotal = document.getElementById('mobileCartTotal');
+    const menuContainer=document.getElementById("menu");
+
+    function toggleCart() {
+        cartContainer.classList.toggle('show');
+        cartOverlay.classList.toggle('show');
+
+        // Update button text
+        const buttonText = cartToggle.querySelector('span');
+        if (cartContainer.classList.contains('show')) {
+            buttonText.textContent = 'Hide Cart';
+            document.body.classList.add('cart-open');
+            cartContainer.style.overflowY="block"
+        } else {
+            buttonText.textContent = 'View Cart';
+            document.body.classList.remove('cart-open');
+            cartContainer.style.overflowY="scroll"
+
+        }
+    }
+
+    cartToggle.addEventListener('click', toggleCart);
+    cartOverlay.addEventListener('click', toggleCart);
+
+    // Modify your existing updateCartUI function to update mobile total
+    const originalUpdateCartUI = updateCartUI;
+    updateCartUI = function() {
+        originalUpdateCartUI();
+
+        // Update mobile cart total
+        let totalPrice = 0;
+        cart.forEach(item => {
+            totalPrice += item.price * item.quantity;
+        });
+        mobileCartTotal.textContent = `(₹${totalPrice})`;
+    }
+
+    // Optional: Close cart when scrolling down
+    let lastScrollTop = 0;
+    window.addEventListener('scroll', () => {
+        if (window.innerWidth <= 768) {
+            const st = window.pageYOffset || document.documentElement.scrollTop;
+            if (st > lastScrollTop && cartContainer.classList.contains('show')) {
+                toggleCart();
+            }
+            lastScrollTop = st <= 0 ? 0 : st;
+        }
+    });
+});
