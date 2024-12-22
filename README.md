@@ -11,7 +11,7 @@ This is a **Restaurant Management System** developed using **Spring Boot**, **JT
 - **MySQL**: Database for storing orders, user details, menu items, etc. 🗃️
 
 ## 🚀 Features
-- **Admin Panel**: Allows restaurant admins to manage orders, view customer requests, and perform administrative tasks. 🧑‍💼
+- **Admin Panel**: Allows restaurant admins to manage orders, add new dishes in the menu, view customer requests, and perform administrative tasks. 🧑‍💼
 - **Customer Ordering**: Customers can browse the menu, place orders, and make payments. 🍽️
 - **Real-Time Updates**: WebSockets provide real-time updates to admins about the status of customer orders. 🔄
 - **Security**: The system uses **Spring Security** to protect the admin routes and provide user login functionality. 🛡️
@@ -33,6 +33,9 @@ The QR code below directs customers to the food ordering page, where they can vi
 
 - **Order Dashboard**: Admins can view active and completed orders. 📊  
   URL: [Order Dashboard](https://cheflink.onrender.com/admin)
+  
+- **Admin Dashboard**: Admins can add new dishes to the menu with dish images directly sotred in cloud. 📊  
+  URL: [Add Dish Dashboard](https://cheflink.onrender.com/addItem)
 
 - **For Demonstration**:
   - Sample Username: **Keshav Sharma**  
@@ -45,14 +48,17 @@ To run the application locally, follow these steps:
 1. **Clone the repository**:
 
     ```sh
-    git clone https://github.com/Medhansh-32/PaperPal.git
+    https://github.com/Medhansh-32/Resturant-Management-System.git
     ```
 
-2. **Navigate to the project directory**:
+2. **Provide the your credentials like MySQL Data Source Url, username, password and client ID for imgur cloud in application.properties**:
 
-    ```sh
-    cd PaperPal
-    ```
+```sh
+spring.datasource.url=
+spring.datasource.username=
+spring.datasource.password=
+client_id=
+```
 
 3. **Build and run the application using Maven or Gradle**:
 
