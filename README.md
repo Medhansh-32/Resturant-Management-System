@@ -53,12 +53,12 @@ To run the application locally, follow these steps:
 
 2. **Provide the your credentials like MySQL Data Source Url, username, password and client ID for imgur cloud in application.properties**:
 
-```sh
-spring.datasource.url=
-spring.datasource.username=
-spring.datasource.password=
-client_id=
-```
+    ```sh
+    spring.datasource.url=
+    spring.datasource.username=
+    spring.datasource.password=
+    client_id=
+    ```
 
 3. **Build and run the application using Maven or Gradle**:
 
