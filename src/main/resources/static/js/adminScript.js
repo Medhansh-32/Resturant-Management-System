@@ -1,5 +1,5 @@
 
-const socket = new WebSocket('wss://cheflink.onrender.com/ws/orders');
+const socket = new WebSocket('wss://localhost:8080/ws/orders');
 const orders = new Map();
 
 
