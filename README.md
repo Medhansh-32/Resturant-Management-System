@@ -26,16 +26,16 @@ This is a **Restaurant Management System** developed using **Spring Boot**, **JT
 
 The QR code below directs customers to the food ordering page, where they can view the menu and place orders.
 
-![QR Code for Ordering](https://cheflink.onrender.com/qr)
+![QR Code for Ordering](https://cheflinks.onrender.com/qr)
 
 - **Login Page**: Provides login functionality for admin users. 🔑  
-  URL: [Login](https://cheflink.onrender.com/login)
+  URL: [Login](https://cheflinks.onrender.com/login)
 
 - **Order Dashboard**: Admins can view active and completed orders. 📊  
-  URL: [Order Dashboard](https://cheflink.onrender.com/admin)
+  URL: [Order Dashboard](https://cheflinks.onrender.com/admin)
   
 - **Admin Dashboard**: Admins can add new dishes to the menu with dish images directly sotred in cloud. 📊  
-  URL: [Add Dish Dashboard](https://cheflink.onrender.com/addItem)
+  URL: [Add Dish Dashboard](https://cheflinks.onrender.com/addItem)
 
 - **For Demonstration**:
   - Sample Username: **Keshav Sharma**  
